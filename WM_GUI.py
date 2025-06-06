@@ -137,7 +137,7 @@ def run_program():
 
     try:
         # Outer loop (30 iterations in your example)
-        for loop_index in range(35):
+        for loop_index in range(25):
             print(loop_index)
             
             current_product_coords = list(initial_product_coords)

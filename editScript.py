@@ -25,7 +25,7 @@ save_button_coords = (1741, 976)   # "Save" button
 next_page_coords = (1825, 863)     # "Next page" button
 
 num_products = 21
-loop_count = 5  # How many times you want to iterate through pages
+loop_count = 10  # How many times you want to iterate through pages
 scroll_distance_per_product = -87   # Adjust if needed
 delay = 2
 
@@ -88,7 +88,7 @@ def update_product_price(product_coords, scroll_increment=0):
 
         # Check and click the edit symbol if allowed
         check_and_click_edit_symbol()
-
+        time.sleep(3)
         # Scroll down to find the sale field
         pyautogui.scroll(-2500)
         time.sleep(2)
@@ -109,7 +109,7 @@ def update_product_price(product_coords, scroll_increment=0):
 
         # Click the save button
         pyautogui.click(save_button_coords)
-        time.sleep(3)
+        time.sleep(4)
 
         # Optionally scroll to the next product
         if scroll_increment != 0:
@@ -139,7 +139,7 @@ def run_program():
             for i in range(num_products):
                 scroll_increment = scroll_distance_per_product * (i + 1)
                 update_product_price(current_product_coords, scroll_increment)
-                time.sleep(delay)
+                time.sleep(0.2)
 
             # Now handle the last 4 products
             for coords in last_product_coords:
