@@ -37,7 +37,7 @@ def is_circular_edit_symbol():
     meaning we should NOT click.
     """
     try:
-        circular_edit_location = pyautogui.locateCenterOnScreen(not_edit_image_path, confidence=0.10)
+        circular_edit_location = pyautogui.locateCenterOnScreen(not_edit_image_path, confidence=0.100)
         if circular_edit_location:
             print("Circular edit symbol detected, avoiding click.")
             return True
@@ -82,13 +82,13 @@ def update_product_price(product_coords, scroll_increment=0):
     try:
         # Click on the product using coordinates
         print(f"Clicking on product at {product_coords}")
-        time.sleep(2)
-        pyautogui.click(product_coords)
         time.sleep(3)
+        pyautogui.click(product_coords)
+        time.sleep(4)
 
         # Check and click the edit symbol if allowed
         check_and_click_edit_symbol()
-        time.sleep(3)
+        time.sleep(1)
         # Scroll down to find the sale field
         pyautogui.scroll(-2500)
         time.sleep(2)
@@ -98,23 +98,23 @@ def update_product_price(product_coords, scroll_increment=0):
         time.sleep(1)
         pyautogui.hotkey('ctrl', 'a')  # Select all text
         pyautogui.press('backspace')   # Delete the selected text
-
+        time.sleep(.5)
         # Type the discount percentage (e.g., '50')
-        pyautogui.typewrite('40')
-        time.sleep(1)
+        pyautogui.typewrite('30')
+        time.sleep(1.5)
 
         # Click the Apply Sale button
         pyautogui.click(apply_sale_coords)
-        time.sleep(1)
+        time.sleep(1.5)
 
         # Click the save button
         pyautogui.click(save_button_coords)
-        time.sleep(4)
+        time.sleep(6)
 
         # Optionally scroll to the next product
         if scroll_increment != 0:
             pyautogui.scroll(scroll_increment)
-            time.sleep(2)
+            time.sleep(3)
 
     except Exception as e:
         print(f"Error encountered while updating product price: {e}")

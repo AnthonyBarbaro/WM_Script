@@ -55,7 +55,7 @@ def update_product_price(product_coords, scroll_increment=0):
         pyautogui.hotkey('ctrl', 'a')
         pyautogui.press('backspace')
 
-        pyautogui.typewrite('40')
+        pyautogui.typewrite('50')
 
         pyautogui.click(apply_sale_coords)
         time.sleep(1)

@@ -60,7 +60,10 @@ def match_template(template, threshold=0.97):
     return None
 
 def is_circular_edit_symbol():
-    location = match_template(not_edit_template, threshold=0.100)
+    pyautogui.scroll(-30)
+    time.sleep(2) 
+    location = match_template(not_edit_template, threshold=1)
+    time.sleep(1)
     if location:
         print("Circular edit symbol detected, avoiding click.")
         return True
@@ -76,7 +79,7 @@ def check_and_click_edit_symbol():
             return
 
         # Otherwise, check for the normal edit symbol
-        location = match_template(edit_template, threshold=0.90)
+        location = match_template(edit_template, threshold=0.95)
         if location:
             print(f"Edit symbol found at center: {location}, clicking on it.")
             pyautogui.moveTo(location[0], location[1], duration=0.5)
@@ -137,7 +140,7 @@ def run_program():
 
     try:
         # Outer loop (30 iterations in your example)
-        for loop_index in range(25):
+        for loop_index in range(35):
             print(loop_index)
             
             current_product_coords = list(initial_product_coords)
